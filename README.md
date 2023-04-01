@@ -1,1 +1,0 @@
-# Chest_Xray_for-Neumonia-detection
