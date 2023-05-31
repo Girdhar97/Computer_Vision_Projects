@@ -47,45 +47,50 @@ Research_Based_Cancer_Detection_XAI/
 ├── 0-non-cancer.jpg # Sample benign image
 └── 1-cancer.jpg # Sample malignant image
 
-text
-
 ---
 
 ## ⚙️ Local Setup
 
 ### 1. Clone & Navigate
-```bash
+
 git clone https://github.com/Girdhar97/Computer_Vision_Projects.git
 cd Computer_Vision_Projects/Research_Based_Cancer_Detection_XAI
-2. Create Virtual Environment
-bash
+
+
+### 2. Create Virtual Environment
+
 python3 -m venv cv_env
 source cv_env/bin/activate        # Linux/Mac
 # cv_env\Scripts\activate         # Windows
-3. Install Dependencies
-bash
+
+### 3. Install Dependencies
+
 pip install -r src/requirements.txt
-4. Run Streamlit Dashboard
-bash
+
+### 4. Run Streamlit Dashboard
+
 cd src
 streamlit run streamlit_app.py
+
 Opens at → http://localhost:8501
 
 WSL users: Use Network URL shown in terminal → http://<your-wsl-ip>:8501
 
-5. Run FastAPI Web App (separate terminal, same env)
-bash
+### 5. Run FastAPI Web App (separate terminal, same env)
+
 cd src
 python3 app.py
+
 Opens at → http://localhost:8000
 
 WSL users: Use Network IP instead → http://<hostname -I output>:8000
 
-📊 API Reference
+## 📊 API Reference
+
 POST /analyze
+
 Upload an ultrasound image → returns prediction + Grad-CAM heatmap
 
-json
 {
   "label": "Malignant (Cancerous)",
   "score": 0.9123,
@@ -95,11 +100,13 @@ json
   "original_image": "<base64>",
   "gradcam_image": "<base64>"
 }
+
 POST /report
+
 Upload an ultrasound image → returns auto-generated .docx clinical report
 
-🧩 System Architecture
-text
+## 🧩 System Architecture
+
 User uploads Ultrasound Image
           ↓
   Streamlit / FastAPI Frontend
@@ -116,18 +123,24 @@ User uploads Ultrasound Image
           ↓
   Model weights hosted on HuggingFace
   → Girdhar97/thyroid-cancer-model
-🛠️ Tech Stack
-Layer	Technology
-Deep Learning	TensorFlow / Keras
-Custom Architecture	FibonacciNet (original implementation)
-Explainable AI	Grad-CAM (GradientTape)
-Backend API	FastAPI + Uvicorn
-Frontend (Dashboard)	Streamlit
-Frontend (Web)	HTML5, CSS3, Vanilla JS, Jinja2
-Report Generation	python-docx
-Model Hosting	HuggingFace Hub (Girdhar97/thyroid-cancer-model)
-Dataset	Thyroid Ultrasound — Kaggle
-📄 License
+
+## 🛠️ Tech Stack
+
+| Layer                | Technology                                       |
+| -------------------- | ------------------------------------------------ |
+| Deep Learning        | TensorFlow / Keras                               |
+| Custom Architecture  | FibonacciNet (original implementation)           |
+| Explainable AI       | Grad-CAM (GradientTape)                          |
+| Backend API          | FastAPI + Uvicorn                                |
+| Frontend (Dashboard) | Streamlit                                        |
+| Frontend (Web)       | HTML5, CSS3, Vanilla JS, Jinja2                  |
+| Report Generation    | python-docx                                      |
+| Model Hosting        | HuggingFace Hub (Girdhar97/thyroid-cancer-model) |
+| Dataset              | Thyroid Ultrasound — Kaggle                      |
+
+
+### 📄 License
+
 MIT License — feel free to use and build on this.
 
 Built with curiosity and a lot of terminal errors. 🔬
